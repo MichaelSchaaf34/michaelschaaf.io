@@ -1,0 +1,5 @@
+CODE TO RUN ON MY MACHINE TO PUSH
+
+git add .
+git commit -m "update portfolio"
+git push

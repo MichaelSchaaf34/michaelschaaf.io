@@ -9,9 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-slate-950 text-slate-100 font-[Inter]">
   <!-- NAV -->
@@ -85,6 +83,20 @@
           <span class="px-2 py-1 rounded bg-white/10">S3</span>
         </div>
       </article>
+      <!-- Card 4 -->
+      <a href="https://the-blog-iota.vercel.app/api/posts" target="_blank" class="group rounded-2xl border border-white/10 hover:border-sky-500/50 bg-white/5 p-5 transition-colors">
+        <div class="h-40 rounded-xl bg-gradient-to-br from-emerald-500/30 to-cyan-400/20 mb-4 flex items-center justify-center">
+          <span class="text-4xl opacity-60">{ }</span>
+        </div>
+        <h3 class="font-semibold text-lg group-hover:text-sky-400 transition-colors">Blog API</h3>
+        <p class="mt-2 text-sm text-slate-300">RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+          <span class="px-2 py-1 rounded bg-white/10">Next.js</span>
+          <span class="px-2 py-1 rounded bg-white/10">Prisma</span>
+          <span class="px-2 py-1 rounded bg-white/10">PostgreSQL</span>
+          <span class="px-2 py-1 rounded bg-white/10">Vercel</span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -144,8 +156,6 @@
     © <span id="year"></span> Michael Schaaf. All rights reserved.
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
