@@ -2,3 +2,20 @@ html {
   scroll-behavior: smooth;
 }
 
+::selection {
+  background-color: #fbbf24; /* amber-400 */
+  color: #0f172a; /* slate-900 */
+}
+
+/* Custom focus ring for better accessibility and style */
+:focus-visible {
+  outline: 2px solid #2563eb; /* blue-600 */
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for interactive elements */
+a, button, input, textarea {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}

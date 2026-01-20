@@ -11,35 +11,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-slate-950 text-slate-100 font-[Inter]">
+<body class="bg-slate-50 text-slate-900 font-[Inter] relative">
+  <!-- BACKGROUND GLOW -->
+  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
+    <div class="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-blue-500/10 blur-[120px] animate-glow"></div>
+    <div class="absolute top-[15%] -right-[10%] w-[55%] h-[55%] rounded-full bg-amber-400/10 blur-[120px] animate-glow-delayed"></div>
+    <div class="absolute bottom-[20%] left-[5%] w-[50%] h-[50%] rounded-full bg-rose-400/10 blur-[120px] animate-glow-slow"></div>
+    <div class="absolute -bottom-[10%] right-[10%] w-[60%] h-[60%] rounded-full bg-cyan-400/10 blur-[120px] animate-glow"></div>
+    <div class="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-emerald-400/8 blur-[130px] animate-glow-delayed"></div>
+  </div>
+
+  <!-- CLOUD OVERLAY (Easy to remove) -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none select-none">
+    <div class="absolute top-[5%] left-[-15%] w-[80%] h-[35%] bg-white/40 blur-[120px] rounded-[100%] animate-glow opacity-60"></div>
+    <div class="absolute top-[35%] right-[-20%] w-[70%] h-[45%] bg-sky-50/50 blur-[100px] rounded-[100%] animate-glow-delayed opacity-50"></div>
+    <div class="absolute bottom-[10%] left-[5%] w-[85%] h-[40%] bg-white/40 blur-[130px] rounded-[100%] animate-glow-slow opacity-60"></div>
+  </div>
+
   <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-slate-950/70 border-b border-white/5">
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="text-lg font-bold tracking-tight">michaelschaaf<span class="text-sky-400">.io</span></a>
-      <nav class="hidden md:flex gap-6 text-sm">
-        <a href="#projects" class="hover:text-sky-300">Projects</a>
-        <a href="#experience" class="hover:text-sky-300">Experience</a>
-        <a href="#skills" class="hover:text-sky-300">Skills</a>
-        <a href="#contact" class="hover:text-sky-300">Contact</a>
+      <a href="#top" class="text-lg font-bold tracking-tight">michaelschaaf<span class="text-blue-600">.io</span></a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="#projects" class="text-slate-600 hover:text-blue-600 transition-colors">Projects</a>
+        <a href="#experience" class="text-slate-600 hover:text-blue-600 transition-colors">Experience</a>
+        <a href="#skills" class="text-slate-600 hover:text-blue-600 transition-colors">Skills</a>
+        <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
       </nav>
-      <a href="#contact" class="hidden md:inline-block rounded-xl px-4 py-2 bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold">Hire Me</a>
+      <a href="#contact" class="hidden md:inline-block rounded-xl px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-all shadow-sm">Let's Connect!</a>
     </div>
   </header>
 
   <!-- HERO -->
   <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900 via-slate-950 to-black"></div>
     <div class="max-w-6xl mx-auto px-4 py-24 text-center">
-      <p class="text-sky-400/90 text-sm uppercase tracking-[0.25em]">Portfolio</p>
-      <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-tight">
+      <p class="text-blue-600 font-bold text-sm uppercase tracking-[0.25em]">Portfolio</p>
+      <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
         Michael Schaaf
       </h1>
-      <p class="mt-4 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-        Systems Specialist → Software Engineer. Building with React, Python, cloud, and AI — focused on climate impact and real-world reliability.
+      <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        Systems Specialist → <span class="text-blue-600 font-semibold">Software Engineer</span>. Building with React, Python, cloud, and AI — focused on climate impact and real-world reliability.
       </p>
       <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="#projects" class="rounded-xl px-5 py-3 bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold">View Projects</a>
-        <a href="/resume.pdf" class="rounded-xl px-5 py-3 border border-white/15 hover:border-white/30">Download Résumé</a>
+        <a href="#projects" class="rounded-xl px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition-all shadow-sm">View Projects</a>
+        <a href="resume.pdf" class="rounded-xl px-5 py-3 border border-slate-200 hover:bg-white hover:border-slate-300 font-medium transition-all">Download Résumé</a>
       </div>
     </div>
   </section>
@@ -47,112 +62,133 @@
   <!-- PROJECTS -->
   <section id="projects" class="max-w-6xl mx-auto px-4 py-16">
     <div class="flex items-end justify-between">
-      <h2 class="text-2xl md:text-3xl font-bold">Featured Projects</h2>
-      <a href="#contact" class="text-sky-400 hover:text-sky-300 text-sm">Let’s collaborate →</a>
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Featured Projects</h2>
+      <a href="#contact" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Let's collaborate →</a>
     </div>
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Card 1 -->
-      <article class="group rounded-2xl border border-white/10 hover:border-white/20 bg-white/5 p-5">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-sky-500/30 to-emerald-400/20 mb-4"></div>
-        <h3 class="font-semibold text-lg">Climate Risk Dashboard</h3>
-        <p class="mt-2 text-sm text-slate-300">Interactive map + API that surfaces flood/heat risk by ZIP using public datasets. Deployed on Cloudflare Pages & Workers.</p>
-        <div class="mt-4 flex gap-2 text-xs text-slate-300">
-          <span class="px-2 py-1 rounded bg-white/10">React</span>
-          <span class="px-2 py-1 rounded bg-white/10">Python</span>
-          <span class="px-2 py-1 rounded bg-white/10">Workers</span>
+      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
+        <div class="h-40 rounded-xl bg-gradient-to-br from-blue-500/20 to-emerald-400/20 mb-4 border border-blue-100"></div>
+        <h3 class="font-bold text-lg text-slate-900">Climate Risk Dashboard</h3>
+        <p class="mt-2 text-sm text-slate-600">Interactive map + API that surfaces flood/heat risk by ZIP using public datasets. Deployed on Cloudflare Pages & Workers.</p>
+        <div class="mt-4 flex gap-2 text-xs font-medium">
+          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">React</span>
+          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">Python</span>
+          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">Workers</span>
         </div>
       </article>
       <!-- Card 2 -->
-      <article class="group rounded-2xl border border-white/10 hover:border-white/20 bg-white/5 p-5">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-fuchsia-500/30 to-indigo-400/20 mb-4"></div>
-        <h3 class="font-semibold text-lg">LLM Code Helper</h3>
-        <p class="mt-2 text-sm text-slate-300">Tiny web app that explains diffs and drafts PR descriptions from a repo snapshot.</p>
-        <div class="mt-4 flex gap-2 text-xs text-slate-300">
-          <span class="px-2 py-1 rounded bg-white/10">Next.js</span>
-          <span class="px-2 py-1 rounded bg-white/10">OpenAI</span>
+      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
+        <div class="h-40 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-400/20 mb-4 border border-purple-100"></div>
+        <h3 class="font-bold text-lg text-slate-900">LLM Code Helper</h3>
+        <p class="mt-2 text-sm text-slate-600">Tiny web app that explains diffs and drafts PR descriptions from a repo snapshot.</p>
+        <div class="mt-4 flex gap-2 text-xs font-medium">
+          <span class="px-2 py-1 rounded-lg bg-purple-50 text-purple-700 border border-purple-100">Next.js</span>
+          <span class="px-2 py-1 rounded-lg bg-purple-50 text-purple-700 border border-purple-100">OpenAI</span>
         </div>
       </article>
       <!-- Card 3 -->
-      <article class="group rounded-2xl border border-white/10 hover:border-white/20 bg-white/5 p-5">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-amber-500/30 to-rose-400/20 mb-4"></div>
-        <h3 class="font-semibold text-lg">File Upload Validator</h3>
-        <p class="mt-2 text-sm text-slate-300">React-based uploader with schema validation for distributors → pharmacies workflow.</p>
-        <div class="mt-4 flex gap-2 text-xs text-slate-300">
-          <span class="px-2 py-1 rounded bg-white/10">React</span>
-          <span class="px-2 py-1 rounded bg-white/10">Zod</span>
-          <span class="px-2 py-1 rounded bg-white/10">S3</span>
+      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
+        <div class="h-40 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-400/20 mb-4 border border-amber-100"></div>
+        <h3 class="font-bold text-lg text-slate-900">File Upload Validator</h3>
+        <p class="mt-2 text-sm text-slate-600">React-based uploader with schema validation for distributors → pharmacies workflow.</p>
+        <div class="mt-4 flex gap-2 text-xs font-medium">
+          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">React</span>
+          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">Zod</span>
+          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">S3</span>
         </div>
       </article>
       <!-- Card 4 -->
-      <a href="https://the-blog-iota.vercel.app/api/posts" target="_blank" class="group rounded-2xl border border-white/10 hover:border-sky-500/50 bg-white/5 p-5 transition-colors">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-emerald-500/30 to-cyan-400/20 mb-4 flex items-center justify-center">
-          <span class="text-4xl opacity-60">{ }</span>
+      <a href="https://the-blog-iota.vercel.app/api/posts" target="_blank" class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
+        <div class="h-40 rounded-xl bg-gradient-to-br from-emerald-500/20 to-blue-400/20 mb-4 flex items-center justify-center border border-emerald-100">
+          <span class="text-4xl opacity-40 grayscale group-hover:grayscale-0 transition-all font-mono text-emerald-600">{ }</span>
         </div>
-        <h3 class="font-semibold text-lg group-hover:text-sky-400 transition-colors">Blog API</h3>
-        <p class="mt-2 text-sm text-slate-300">RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
-        <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
-          <span class="px-2 py-1 rounded bg-white/10">Next.js</span>
-          <span class="px-2 py-1 rounded bg-white/10">Prisma</span>
-          <span class="px-2 py-1 rounded bg-white/10">PostgreSQL</span>
-          <span class="px-2 py-1 rounded bg-white/10">Vercel</span>
+        <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">Blog API</h3>
+        <p class="mt-2 text-sm text-slate-600">RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs font-medium">
+          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Next.js</span>
+          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Prisma</span>
+          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">PostgreSQL</span>
+          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Vercel</span>
         </div>
       </a>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-6xl mx-auto px-4 py-16 border-t border-white/5">
-    <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-        <h3 class="font-semibold">Systems Specialist — Pharma Co.</h3>
-        <p class="text-sm text-slate-300">Azure, AWS, M365 admin, automation, and data flows to production.</p>
-        <ul class="mt-3 text-sm list-disc list-inside text-slate-300 space-y-1">
-          <li>Migrated on‑prem data pipelines to AWS.</li>
-          <li>Built PTO syncing tool with Paychex + Microsoft Graph.</li>
-          <li>Hardened M365 tenant & Excel macro security.</li>
+  <section id="experience" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
+    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Experience</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-8">
+      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <h3 class="font-bold text-blue-600">Systems Specialist — Pharma Co.</h3>
+        <p class="text-sm text-slate-500 font-medium">IT Infrastructure & Automation</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-3">
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>Migrated on‑prem data pipelines to AWS (S3, Lambda, Glue).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>Built PTO syncing tool with Paychex + Microsoft Graph API.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>Hardened M365 tenant & Excel macro security across the org.</span>
+          </li>
         </ul>
       </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-        <h3 class="font-semibold">Projects & Community</h3>
-        <ul class="mt-3 text-sm list-disc list-inside text-slate-300 space-y-1">
-          <li>AI + Climate engineering bootcamp and research.</li>
-          <li>Full‑stack safety reviews web app for travelers.</li>
-          <li>Fantasy analytics tools (because fun matters).</li>
+      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <h3 class="font-bold text-blue-600">Projects & Community</h3>
+        <p class="text-sm text-slate-500 font-medium">Learning & Open Source</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-3">
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>AI + Climate engineering bootcamp and independent research.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>Full‑stack safety reviews web app for international travelers.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-amber-500 mt-1">•</span>
+            <span>Custom fantasy analytics tools (Python + Streamlit).</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="max-w-6xl mx-auto px-4 py-16 border-t border-white/5">
-    <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
-    <div class="mt-6 flex flex-wrap gap-2 text-sm text-slate-200">
-      <span class="px-3 py-1 rounded-full bg-white/10">React</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">TypeScript</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Python</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Next.js</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Azure</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">AWS</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Cloudflare</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Postgres</span>
-      <span class="px-3 py-1 rounded-full bg-white/10">Docker</span>
+  <section id="skills" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
+    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Skills</h2>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">React</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">TypeScript</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Python</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Next.js</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Azure</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">AWS</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Cloudflare</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Postgres</span>
+      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Docker</span>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-16 border-t border-white/5">
-    <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
-    <p class="mt-2 text-slate-300">Email me at <a class="text-sky-400 hover:text-sky-300" href="mailto:hello@michaelschaaf.io">hello@michaelschaaf.io</a> or use the form:</p>
-    <form class="mt-6 grid gap-4 max-w-xl" action="mailto:hello@michaelschaaf.io" method="post" enctype="text/plain">
-      <input class="rounded-xl bg-white/5 border border-white/10 px-4 py-3" name="name" placeholder="Your name" required>
-      <input class="rounded-xl bg-white/5 border border-white/10 px-4 py-3" name="email" type="email" placeholder="Your email" required>
-      <textarea class="rounded-xl bg-white/5 border border-white/10 px-4 py-3" name="message" rows="5" placeholder="Message"></textarea>
-      <button class="rounded-xl px-5 py-3 bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold w-fit">Send</button>
+  <section id="contact" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
+    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Contact</h2>
+    <p class="mt-2 text-slate-600">Email me at <a class="text-blue-600 hover:underline font-semibold" href="mailto:michaelschaaf34@yahoo.com">michaelschaaf34@yahoo.com</a> or use the form:</p>
+    <form class="mt-8 grid gap-4 max-w-xl" action="mailto:michaelschaaf34@yahoo.com" method="post" enctype="text/plain">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="name" placeholder="Your name" required>
+        <input class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="email" type="email" placeholder="Your email" required>
+      </div>
+      <textarea class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="message" rows="5" placeholder="How can I help you?"></textarea>
+      <button class="rounded-xl px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-fit transition-all shadow-md active:scale-95">Send Message</button>
     </form>
   </section>
 
-  <footer class="border-t border-white/5 py-10 text-center text-sm text-slate-400">
+  <footer class="border-t border-slate-200 py-10 text-center text-sm text-slate-500">
     © <span id="year"></span> Michael Schaaf. All rights reserved.
   </footer>
 
