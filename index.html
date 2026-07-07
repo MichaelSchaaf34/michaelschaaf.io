@@ -1,210 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michael Schaaf — Portfolio</title>
-  <meta name="description" content="Portfolio of Michael Schaaf — systems specialist moving into software engineering, AI, and climate tech." />
+  <meta name="description" content="Michael Schaaf — Systems Specialist turned Software Engineer. React, Python, cloud, and AI, focused on climate impact and real-world reliability.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FBF4E8;
+      --surface: #FFFDFA;
+      --border: #EDE0C8;
+      --border-strong: #E3D2B4;
+      --ink: #2D2A26;
+      --ink-soft: #6E675E;
+      --ink-faint: #9B9186;
+      --accent: #D9822B;
+      --accent-hover: #B9691F;
+      --accent-deep: #B4771F;
+      --chip-bg: #F8EDD2;
+      --chip-ink: #8F6318;
+      --chip-border: #EFDEB4;
+      --on-accent: #FFF9F3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+    a { color: var(--accent); text-decoration: none; }
+    ::selection { background: #F3D68F; color: var(--ink); }
+    h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
+    .wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+    @keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    /* background washes */
+    .washes { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .washes div { position: absolute; border-radius: 9999px; filter: blur(115px); }
+    .wash-1 { top: -20%; right: -15%; width: 55%; height: 55%; background: rgba(228,168,86,0.16); animation: drift 14s ease-in-out infinite; }
+    .wash-2 { top: 30%; left: -18%; width: 50%; height: 50%; background: rgba(246,193,119,0.16); animation: drift 18s ease-in-out infinite 3s; }
+    .wash-3 { bottom: -15%; right: 10%; width: 45%; height: 45%; background: rgba(217,130,43,0.10); animation: drift 16s ease-in-out infinite 6s; }
+
+    /* nav */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(251,244,232,0.82); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1152px; margin: 0 auto; }
+    .brand { font-size: 19px; font-weight: 700; color: var(--ink); }
+    .brand span { color: var(--accent); }
+    nav.links { display: flex; gap: 28px; font-size: 15px; font-weight: 500; }
+    nav.links a { color: var(--ink-soft); transition: color .15s; }
+    nav.links a:hover { color: var(--accent); }
+    .btn { display: inline-block; border-radius: 9999px; font-weight: 600; transition: all .2s; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 4px 14px rgba(217,130,43,0.3); border: none; }
+    .btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); transform: translateY(-2px); }
+    .btn-ghost { border: 1.5px solid var(--border-strong); color: var(--ink); font-weight: 500; }
+    .btn-ghost:hover { background: #FFFFFF; border-color: #D6C199; color: var(--ink); }
+    .btn-sm { padding: 9px 20px; font-size: 15px; }
+    .btn-lg { padding: 14px 28px; font-size: 16px; }
+
+    /* hero */
+    .hero { position: relative; padding: 110px 0 90px; }
+    .eyebrow { margin: 0; color: var(--accent-deep); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.28em; }
+    .hero h1 { margin: 20px 0 0; font-size: clamp(44px, 7vw, 76px); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; max-width: 800px; }
+    .hero .lede { margin: 24px 0 0; font-size: 21px; color: var(--ink-soft); max-width: 620px; line-height: 1.6; }
+    .hero .lede strong { color: var(--accent); font-weight: 600; }
+    .hero .cta { margin-top: 40px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+    /* sections */
+    section.block { position: relative; padding: 72px 0; }
+    section.block + section.block { border-top: 1px solid var(--border); }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; }
+    h2 { margin: 0; font-size: 36px; font-weight: 700; }
+    .collab { color: var(--accent); font-weight: 600; font-size: 15px; transition: color .15s; }
+    .collab:hover { color: var(--accent-hover); }
+
+    /* projects */
+    .grid-projects { margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .card { display: block; border-radius: 22px; border: 1px solid var(--border); background: var(--surface); padding: 22px; color: inherit; transition: all .25s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px -14px rgba(120,80,50,0.22); border-color: #EAC98F; }
+    .card .thumb { height: 156px; border-radius: 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; }
+    .card .thumb span { font-size: 34px; opacity: 0.5; color: var(--accent-deep); font-family: 'Space Grotesk', sans-serif; }
+    .card h3 { margin: 0; font-weight: 700; font-size: 19px; color: var(--ink); }
+    .card p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+    .tags { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; font-size: 12.5px; font-weight: 500; }
+    .tags span { padding: 4px 11px; border-radius: 9999px; background: var(--chip-bg); color: var(--chip-ink); border: 1px solid var(--chip-border); }
+    .t1 { background: linear-gradient(135deg, #FAE9C8, #F5D9A2); }
+    .t2 { background: linear-gradient(135deg, #FBEDD3, #F1DAAC); }
+    .t3 { background: linear-gradient(135deg, #FBEECB, #F6DFAE); }
+    .t4 { background: linear-gradient(135deg, #F9EBCE, #EFDCB0); }
+    .t5 { background: linear-gradient(135deg, #FAEACA, #F3DBA8); }
+
+    /* experience */
+    .grid-xp { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .xp-card { border-radius: 22px; background: var(--surface); border: 1px solid var(--border); padding: 28px; box-shadow: 0 1px 3px rgba(120,80,50,0.06); }
+    .xp-card h3 { margin: 0; font-weight: 700; color: var(--accent); font-size: 18px; }
+    .xp-card .sub { margin: 6px 0 0; font-size: 14px; color: var(--ink-faint); font-weight: 500; }
+    .xp-card ul { margin: 18px 0 0; padding: 0; list-style: none; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); display: grid; gap: 12px; }
+    .xp-card li { display: flex; align-items: flex-start; gap: 10px; }
+    .xp-card li::before { content: "●"; color: #C98A2C; margin-top: 1px; }
+
+    /* skills */
+    .chips { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .chips span { padding: 10px 20px; border-radius: 9999px; background: var(--surface); border: 1px solid var(--border); color: #5A5348; font-size: 15px; font-weight: 500; transition: all .2s; }
+    .chips span:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* contact */
+    .contact-lede { margin: 10px 0 0; color: var(--ink-soft); font-size: 16px; }
+    .contact-lede a { font-weight: 600; }
+    .contact-lede a:hover { text-decoration: underline; }
+    form { margin-top: 32px; display: grid; gap: 16px; max-width: 576px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    input, textarea { border-radius: 14px; background: var(--surface); border: 1px solid var(--border); padding: 13px 18px; font-size: 15.5px; font-family: inherit; color: var(--ink); outline: none; transition: all .15s; }
+    input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(217,130,43,0.16); }
+    textarea { resize: vertical; }
+    form .btn { width: fit-content; padding: 14px 34px; font-size: 16px; font-family: inherit; }
+    form .btn:active { transform: scale(0.97); }
+
+    footer { border-top: 1px solid var(--border); padding: 44px 0; text-align: center; font-size: 14px; color: var(--ink-faint); position: relative; }
+
+    /* reveal */
+    [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    [data-reveal].in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .washes div { animation: none; }
+    }
+
+    @media (max-width: 900px) {
+      .grid-projects { grid-template-columns: 1fr 1fr; }
+      .grid-xp { grid-template-columns: 1fr; }
+      nav.links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .grid-projects { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-[Inter] relative">
-  <!-- BACKGROUND GLOW -->
-  <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
-    <div class="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-blue-500/10 blur-[120px] animate-glow"></div>
-    <div class="absolute top-[15%] -right-[10%] w-[55%] h-[55%] rounded-full bg-amber-400/10 blur-[120px] animate-glow-delayed"></div>
-    <div class="absolute bottom-[20%] left-[5%] w-[50%] h-[50%] rounded-full bg-rose-400/10 blur-[120px] animate-glow-slow"></div>
-    <div class="absolute -bottom-[10%] right-[10%] w-[60%] h-[60%] rounded-full bg-cyan-400/10 blur-[120px] animate-glow"></div>
-    <div class="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-emerald-400/8 blur-[130px] animate-glow-delayed"></div>
+<body>
+  <div class="washes" aria-hidden="true">
+    <div class="wash-1"></div><div class="wash-2"></div><div class="wash-3"></div>
   </div>
 
-  <!-- CLOUD OVERLAY (Easy to remove) -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none select-none">
-    <div class="absolute top-[5%] left-[-15%] w-[80%] h-[35%] bg-white/40 blur-[120px] rounded-[100%] animate-glow opacity-60"></div>
-    <div class="absolute top-[35%] right-[-20%] w-[70%] h-[45%] bg-sky-50/50 blur-[100px] rounded-[100%] animate-glow-delayed opacity-50"></div>
-    <div class="absolute bottom-[10%] left-[5%] w-[85%] h-[40%] bg-white/40 blur-[130px] rounded-[100%] animate-glow-slow opacity-60"></div>
-  </div>
-
-  <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="text-lg font-bold tracking-tight">michaelschaaf<span class="text-blue-600">.io</span></a>
-      <nav class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="#projects" class="text-slate-600 hover:text-blue-600 transition-colors">Projects</a>
-        <a href="#experience" class="text-slate-600 hover:text-blue-600 transition-colors">Experience</a>
-        <a href="#skills" class="text-slate-600 hover:text-blue-600 transition-colors">Skills</a>
-        <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+  <header>
+    <div class="nav-inner">
+      <a href="#top" class="brand">michaelschaaf<span>.io</span></a>
+      <nav class="links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a href="#contact" class="hidden md:inline-block rounded-xl px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-all shadow-sm">Let's Connect!</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Let's connect</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="top" class="relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 py-24 text-center">
-      <p class="text-blue-600 font-bold text-sm uppercase tracking-[0.25em]">Portfolio</p>
-      <h1 class="mt-4 text-4xl md:text-6xl font-extrabold leading-tight text-slate-900">
-        Michael Schaaf
-      </h1>
-      <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-        Systems Specialist → <span class="text-blue-600 font-semibold">Software Engineer</span>. Building with React, Python, cloud, and AI — focused on climate impact and real-world reliability.
-      </p>
-      <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="#projects" class="rounded-xl px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition-all shadow-sm">View Projects</a>
-        <a href="resume.pdf" class="rounded-xl px-5 py-3 border border-slate-200 hover:bg-white hover:border-slate-300 font-medium transition-all">Download Résumé</a>
+  <section id="top" class="hero">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Portfolio</p>
+      <h1 data-reveal>Michael Schaaf</h1>
+      <p class="lede" data-reveal>Systems Specialist → <strong>Software Engineer</strong>. Building with React, Python, cloud, and AI — focused on climate impact and real-world reliability.</p>
+      <div class="cta" data-reveal>
+        <a href="#projects" class="btn btn-primary btn-lg">View projects</a>
+        <a href="#" class="btn btn-ghost btn-lg">Download résumé</a>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="max-w-6xl mx-auto px-4 py-16">
-    <div class="flex items-end justify-between">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Featured Projects</h2>
-      <a href="#contact" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Let's collaborate →</a>
-    </div>
-    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Card 1 -->
-      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-blue-500/20 to-emerald-400/20 mb-4 border border-blue-100"></div>
-        <h3 class="font-bold text-lg text-slate-900">Climate Risk Dashboard</h3>
-        <p class="mt-2 text-sm text-slate-600">Interactive map + API that surfaces flood/heat risk by ZIP using public datasets. Deployed on Cloudflare Pages & Workers.</p>
-        <div class="mt-4 flex gap-2 text-xs font-medium">
-          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">React</span>
-          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">Python</span>
-          <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100">Workers</span>
-        </div>
-      </article>
-      <!-- Card 2 -->
-      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-400/20 mb-4 border border-purple-100"></div>
-        <h3 class="font-bold text-lg text-slate-900">LLM Code Helper</h3>
-        <p class="mt-2 text-sm text-slate-600">Tiny web app that explains diffs and drafts PR descriptions from a repo snapshot.</p>
-        <div class="mt-4 flex gap-2 text-xs font-medium">
-          <span class="px-2 py-1 rounded-lg bg-purple-50 text-purple-700 border border-purple-100">Next.js</span>
-          <span class="px-2 py-1 rounded-lg bg-purple-50 text-purple-700 border border-purple-100">OpenAI</span>
-        </div>
-      </article>
-      <!-- Card 3 -->
-      <article class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-400/20 mb-4 border border-amber-100"></div>
-        <h3 class="font-bold text-lg text-slate-900">File Upload Validator</h3>
-        <p class="mt-2 text-sm text-slate-600">React-based uploader with schema validation for distributors → pharmacies workflow.</p>
-        <div class="mt-4 flex gap-2 text-xs font-medium">
-          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">React</span>
-          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">Zod</span>
-          <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100">S3</span>
-        </div>
-      </article>
-      <!-- Card 4 -->
-      <a href="https://the-blog-iota.vercel.app/api/posts" target="_blank" class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-emerald-500/20 to-blue-400/20 mb-4 flex items-center justify-center border border-emerald-100">
-          <span class="text-4xl opacity-40 grayscale group-hover:grayscale-0 transition-all font-mono text-emerald-600">{ }</span>
-        </div>
-        <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">Blog API</h3>
-        <p class="mt-2 text-sm text-slate-600">RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
-        <div class="mt-4 flex flex-wrap gap-2 text-xs font-medium">
-          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Next.js</span>
-          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Prisma</span>
-          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">PostgreSQL</span>
-          <span class="px-2 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">Vercel</span>
-        </div>
-      </a>
-      <!-- Card 5 -->
-      <a href="https://github.com/MichaelSchaaf34/SoloWay" target="_blank" class="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:shadow-xl hover:border-blue-200">
-        <div class="h-40 rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-400/20 mb-4 flex items-center justify-center border border-cyan-100">
-          <span class="text-4xl opacity-40 grayscale group-hover:grayscale-0 transition-all text-cyan-600">✈</span>
-        </div>
-        <h3 class="font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">SoloWay</h3>
-        <p class="mt-2 text-sm text-slate-600">Travel Solo, Not Alone. Intelligent travel companion for solo explorers with smart itineraries and safety features.</p>
-        <div class="mt-4 flex flex-wrap gap-2 text-xs font-medium">
-          <span class="px-2 py-1 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-100">React</span>
-          <span class="px-2 py-1 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-100">Vite</span>
-          <span class="px-2 py-1 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-100">Tailwind</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
-    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Experience</h2>
-    <div class="mt-8 grid md:grid-cols-2 gap-8">
-      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
-        <h3 class="font-bold text-blue-600">Systems Specialist — Pharma Co.</h3>
-        <p class="text-sm text-slate-500 font-medium">IT Infrastructure & Automation</p>
-        <ul class="mt-4 text-sm text-slate-600 space-y-3">
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>Migrated on‑prem data pipelines to AWS (S3, Lambda, Glue).</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>Built PTO syncing tool with Paychex + Microsoft Graph API.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>Hardened M365 tenant & Excel macro security across the org.</span>
-          </li>
-        </ul>
+  <section id="projects" class="block">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Featured projects</h2>
+        <a href="#contact" class="collab">Let's collaborate →</a>
       </div>
-      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
-        <h3 class="font-bold text-blue-600">Projects & Community</h3>
-        <p class="text-sm text-slate-500 font-medium">Learning & Open Source</p>
-        <ul class="mt-4 text-sm text-slate-600 space-y-3">
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>AI + Climate engineering bootcamp and independent research.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>Full‑stack safety reviews web app for international travelers.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-amber-500 mt-1">•</span>
-            <span>Custom fantasy analytics tools (Python + Streamlit).</span>
-          </li>
-        </ul>
+      <div class="grid-projects">
+        <a class="card" data-reveal href="#projects">
+          <div class="thumb t1"></div>
+          <h3>Climate Risk Dashboard</h3>
+          <p>Interactive map + API that surfaces flood/heat risk by ZIP using public datasets. Deployed on Cloudflare Pages &amp; Workers.</p>
+          <div class="tags"><span>React</span><span>Python</span><span>Workers</span></div>
+        </a>
+        <a class="card" data-reveal href="#projects">
+          <div class="thumb t2"></div>
+          <h3>LLM Code Helper</h3>
+          <p>Tiny web app that explains diffs and drafts PR descriptions from a repo snapshot.</p>
+          <div class="tags"><span>Next.js</span><span>OpenAI</span></div>
+        </a>
+        <a class="card" data-reveal href="#projects">
+          <div class="thumb t3"></div>
+          <h3>File Upload Validator</h3>
+          <p>React-based uploader with schema validation for distributors → pharmacies workflow.</p>
+          <div class="tags"><span>React</span><span>Zod</span><span>S3</span></div>
+        </a>
+        <a class="card" data-reveal href="https://the-blog-iota.vercel.app/api/posts" target="_blank" rel="noopener">
+          <div class="thumb t4"><span>{ }</span></div>
+          <h3>Blog API</h3>
+          <p>RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
+          <div class="tags"><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span><span>Vercel</span></div>
+        </a>
+        <a class="card" data-reveal href="https://github.com/MichaelSchaaf34/SoloWay" target="_blank" rel="noopener">
+          <div class="thumb t5"><span>✈</span></div>
+          <h3>SoloWay</h3>
+          <p>Travel Solo, Not Alone. Intelligent travel companion for solo explorers with smart itineraries and safety features.</p>
+          <div class="tags"><span>React</span><span>Vite</span><span>Tailwind</span></div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
-    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Skills</h2>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">React</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">TypeScript</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Python</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Next.js</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Azure</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">AWS</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Cloudflare</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Postgres</span>
-      <span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-sm font-semibold shadow-sm hover:border-blue-400 transition-colors">Docker</span>
+  <section id="experience" class="block">
+    <div class="wrap">
+      <h2 data-reveal>Experience</h2>
+      <div class="grid-xp">
+        <div class="xp-card" data-reveal>
+          <h3>Systems Specialist — Pharma Co.</h3>
+          <p class="sub">IT Infrastructure &amp; Automation</p>
+          <ul>
+            <li><span>Migrated on‑prem data pipelines to AWS (S3, Lambda, Glue).</span></li>
+            <li><span>Built PTO syncing tool with Paychex + Microsoft Graph API.</span></li>
+            <li><span>Hardened M365 tenant &amp; Excel macro security across the org.</span></li>
+          </ul>
+        </div>
+        <div class="xp-card" data-reveal>
+          <h3>Projects &amp; Community</h3>
+          <p class="sub">Learning &amp; Open Source</p>
+          <ul>
+            <li><span>AI + Climate engineering bootcamp and independent research.</span></li>
+            <li><span>Full‑stack safety reviews web app for international travelers.</span></li>
+            <li><span>Custom fantasy analytics tools (Python + Streamlit).</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-16 border-t border-slate-200">
-    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Contact</h2>
-    <p class="mt-2 text-slate-600">Email me at <a class="text-blue-600 hover:underline font-semibold" href="mailto:michaelschaaf34@yahoo.com">michaelschaaf34@yahoo.com</a> or use the form:</p>
-    <form class="mt-8 grid gap-4 max-w-xl" action="mailto:michaelschaaf34@yahoo.com" method="post" enctype="text/plain">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <input class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="name" placeholder="Your name" required>
-        <input class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="email" type="email" placeholder="Your email" required>
+  <section id="skills" class="block">
+    <div class="wrap">
+      <h2 data-reveal>Skills</h2>
+      <div class="chips" data-reveal>
+        <span>React</span><span>TypeScript</span><span>Python</span><span>Next.js</span><span>Azure</span><span>AWS</span><span>Cloudflare</span><span>Postgres</span><span>Docker</span>
       </div>
-      <textarea class="rounded-xl bg-white border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all" name="message" rows="5" placeholder="How can I help you?"></textarea>
-      <button class="rounded-xl px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-fit transition-all shadow-md active:scale-95">Send Message</button>
-    </form>
+    </div>
   </section>
 
-  <footer class="border-t border-slate-200 py-10 text-center text-sm text-slate-500">
-    © <span id="year"></span> Michael Schaaf. All rights reserved.
-  </footer>
+  <section id="contact" class="block">
+    <div class="wrap">
+      <h2 data-reveal>Contact</h2>
+      <p class="contact-lede" data-reveal>Email me at <a href="/cdn-cgi/l/email-protection#7815111b10191d140b1b1019191e4b4c380119101717561b1715"><span class="__cf_email__" data-cfemail="4d20242e252c28213e2e252c2c2b7e790d342c252222632e2220">[email&#160;protected]</span></a> or use the form:</p>
+      <form data-reveal action="mailto:michaelschaaf34@yahoo.com" method="post" enctype="text/plain">
+        <div class="form-row">
+          <input name="name" placeholder="Your name" autocomplete="name">
+          <input name="email" type="email" placeholder="Your email" autocomplete="email">
+        </div>
+        <textarea name="message" rows="5" placeholder="How can I help you?"></textarea>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </form>
+    </div>
+  </section>
 
-  <script src="script.js" defer></script>
+  <footer>© <span id="year"></span> Michael Schaaf. All rights reserved.</footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+      var reveal = function (el) { el.classList.add('in'); };
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        els.forEach(function (el) { io.observe(el); });
+      }
+      // guaranteed fallback so nothing stays hidden
+      els.forEach(function (el, i) { setTimeout(function () { reveal(el); }, 250 + Math.min(i * 90, 1100)); });
+    })();
+  </script>
 </body>
 </html>
