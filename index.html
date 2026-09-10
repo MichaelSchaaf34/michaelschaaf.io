@@ -116,12 +116,14 @@
     .collab:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
 
     /* projects */
-    .grid-projects { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-projects { margin-top: 40px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+    .card { grid-column: span 2; }
     .card { position: relative; display: flex; flex-direction: column; border-radius: 26px; border: 1px solid var(--border); background: var(--surface); padding: 16px 16px 22px; color: inherit; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; overflow: hidden; }
     .card::before { content: ""; position: absolute; inset: -1px; border-radius: 27px; padding: 1px; background: linear-gradient(135deg, var(--accent-soft), transparent 40%, transparent 60%, var(--accent)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s; pointer-events: none; }
     .card:hover { transform: translateY(-6px) rotate(-0.4deg); box-shadow: 0 26px 48px -18px rgba(120,80,50,0.32); border-color: transparent; }
     .card:hover::before { opacity: 1; }
-    .card.featured { grid-column: span 2; }
+    .card.featured { grid-column: span 4; }
+    .card.half { grid-column: span 3; }
     .card .thumb { position: relative; height: 170px; border-radius: 18px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .card.featured .thumb { height: 200px; }
     .card .thumb::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(180,119,31,0.25) 1px, transparent 1.4px); background-size: 18px 18px; opacity: .6; }
@@ -199,7 +201,8 @@
       .stickers { display: none; }
     }
     @media (max-width: 900px) {
-      .grid-projects { grid-template-columns: 1fr 1fr; }
+      .grid-projects { grid-template-columns: repeat(2, 1fr); }
+      .card, .card.half { grid-column: span 1; }
       .card.featured { grid-column: span 2; }
       .grid-xp { grid-template-columns: 1fr; }
       nav.links { display: none; }
@@ -209,7 +212,7 @@
       header { top: 10px; padding: 0 10px; }
       .hero { padding: 72px 0 56px; }
       .grid-projects { grid-template-columns: 1fr; }
-      .card.featured { grid-column: span 1; }
+      .card, .card.half, .card.featured { grid-column: span 1; }
       .form-row { grid-template-columns: 1fr; }
       .contact-card { padding: 24px; border-radius: 22px; }
       section.block { padding: 64px 0; }
@@ -289,7 +292,7 @@
             <div class="tags"><span>React</span><span>Python</span><span>Workers</span></div>
           </div>
         </a>
-        <a class="card" data-reveal href="#projects">
+        <a class="card half" data-reveal href="#projects">
           <div class="thumb t2"><span class="num">03</span><span class="go">↗</span><span class="glyph">🤖</span></div>
           <div class="body">
             <h3>LLM Code Helper</h3>
@@ -297,20 +300,12 @@
             <div class="tags"><span>Next.js</span><span>OpenAI</span></div>
           </div>
         </a>
-        <a class="card" data-reveal href="#projects">
+        <a class="card half" data-reveal href="#projects">
           <div class="thumb t3"><span class="num">04</span><span class="go">↗</span><span class="glyph">📦</span></div>
           <div class="body">
             <h3>File Upload Validator</h3>
             <p>React-based uploader with schema validation for distributors → pharmacies workflow.</p>
             <div class="tags"><span>React</span><span>Zod</span><span>S3</span></div>
-          </div>
-        </a>
-        <a class="card" data-reveal href="https://the-blog-iota.vercel.app/api/posts" target="_blank" rel="noopener">
-          <div class="thumb t4"><span class="num">05</span><span class="go">↗</span><span class="glyph mono">{ }</span></div>
-          <div class="body">
-            <h3>Blog API</h3>
-            <p>RESTful blog backend with posts, categories, tags, and likes. Prisma ORM with PostgreSQL on Neon.</p>
-            <div class="tags"><span>Next.js</span><span>Prisma</span><span>PostgreSQL</span><span>Vercel</span></div>
           </div>
         </a>
       </div>
