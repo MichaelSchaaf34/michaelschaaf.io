@@ -54,6 +54,7 @@
     header { position: sticky; top: 14px; z-index: 50; padding: 0 16px; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px 10px 20px; max-width: 1000px; margin: 0 auto; border-radius: 9999px; background: rgba(255,253,250,0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); box-shadow: 0 10px 30px -18px rgba(var(--shadow-ink),0.35); }
     .brand { font-size: 18px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 9px; }
+    .brand b { font-weight: inherit; }
     .brand span { color: var(--accent); }
     .brand i { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(217,130,43,0.18); animation: pulse 2.4s ease-in-out infinite; }
     nav.links { display: flex; gap: 4px; font-size: 14.5px; font-weight: 500; }
@@ -222,7 +223,7 @@
 
   <header>
     <div class="nav-inner">
-      <a href="#top" class="brand"><i></i>michaelschaaf<span>.io</span></a>
+      <a href="#top" class="brand"><i></i><b>michaelschaaf<span>.io</span></b></a>
       <nav class="links">
         <a href="#top">Portfolio</a>
         <a href="#projects">Projects</a>
@@ -387,7 +388,7 @@
 
   <footer>
     <div class="wrap">
-      <a href="#top" class="brand">michaelschaaf<span>.io</span></a>
+      <a href="#top" class="brand"><b>michaelschaaf<span>.io</span></b></a>
       <span>© <span id="year"></span> Michael Schaaf. All rights reserved.</span>
       <span class="made">Made with ☕ &amp; ✨</span>
     </div>
