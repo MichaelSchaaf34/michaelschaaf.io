@@ -413,12 +413,14 @@
             <a href="https://github.com/MichaelSchaaf34" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
-        <form action="mailto:michaelschaaf34@yahoo.com" method="post" enctype="text/plain">
+        <form action="https://formspree.io/f/xrpbzley" method="POST">
+          <input type="hidden" name="_subject" value="New message from michaelschaaf.io">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
-            <input name="name" placeholder="Your name" autocomplete="name">
-            <input name="email" type="email" placeholder="Your email" autocomplete="email">
+            <input name="name" placeholder="Your name" autocomplete="name" required>
+            <input name="email" type="email" placeholder="Your email" autocomplete="email" required>
           </div>
-          <textarea name="message" rows="5" placeholder="How can I help you?"></textarea>
+          <textarea name="message" rows="5" placeholder="How can I help you?" required></textarea>
           <button type="submit" class="btn btn-primary">Send message <span class="arr">→</span></button>
         </form>
       </div>
